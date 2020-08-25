@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:44:35 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/25 15:07:11 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/25 18:07:10 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,23 @@ int		ft_atoi_cub3d(char *line, int *i)
 		(*i)++;
 	}
 	return (num);
+}
+
+char		*ft_strdup_cub3d(char *str)
+{
+	char			*dest;
+	char			*temp;
+
+	temp = (char *)malloc(sizeof(*dest) * (ft_strlen_gnl(str) + 1));
+	if (!temp)
+		return (NULL);
+	dest = temp;
+	while (*str && *str != ' ')
+	{
+		*temp = *str;
+		temp++;
+		str++;
+	}
+	*temp = '\0';
+	return (dest);
 }

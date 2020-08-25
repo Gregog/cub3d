@@ -6,11 +6,11 @@
 #    By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/24 18:03:21 by rvernius          #+#    #+#              #
-#    Updated: 2020/08/25 15:18:33 by rvernius         ###   ########.fr        #
+#    Updated: 2020/08/25 16:55:51 by rvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c check_argc.c parse.c parse_utils.c
+SRCS = main.c check_argc.c parse.c parse_utils.c parce_line.c
 
 NAME = cub3d
 

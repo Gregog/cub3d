@@ -6,30 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/25 15:27:13 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:59:37 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int		parse_resolution(char *line, t_config *config, int *i)
-{
-	if (config->win.x || config->win.y)
-	{
-		ft_putstr_fd("Error\nPlease, choose one resolution\n", 2);
-		exit(0);
-	}
-	(*i)++;
-	config->win.x = ft_atoi_cub3d(line, i);
-	config->win.y = ft_atoi_cub3d(line, i);
-	skip_spaces(line, i);
-	if (config->win.x <= 0 || config->win.y <= 0 || line[*i] != '\0')
-	{
-		ft_putstr_fd("Error\nPlease, configure resolution properly", 2);
-		exit(0);
-	}
-	return (0);
-}
 
 int		parse_line(char *line, t_config *config)
 {
@@ -39,6 +20,16 @@ int		parse_line(char *line, t_config *config)
 	skip_spaces(line, &i);
 	if (line[i] == 'R' && line[i + 1] == ' ')
 		parse_resolution(line, config, &i);
+	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
+		texture_path(line, &config->textures.n_path, &i);
+	else if (line[i] == 'S' && line[i + 1] == 'O' && line[i + 2] == ' ')
+		texture_path(line, &config->textures.s_path, &i);
+	else if (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ')
+		texture_path(line, &config->textures.w_path, &i);
+	else if (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
+		texture_path(line, &config->textures.e_path, &i);
+	else if (line[i] == 'S' && line[i + 1] == ' ')
+		texture_path(line, &config->textures.i_path, &i);
 	return (0);
 }
 
