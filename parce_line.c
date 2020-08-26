@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:52:59 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/25 18:23:10 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 13:21:50 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void		texture_path(char *line, char **path, int *i)
 	(*i) += 2;
 	skip_spaces(line, i);
 	*path = ft_strdup_cub3d(&line[*i]);
+	while(line[*i] != ' ' && line[*i] != '\0')
+		(*i) += 1;
 	skip_spaces(line, i);
-	printf("%s\n", &line[*i]);
-	//if (!(*path) || line[*i] != '\0') //NAMECHECK
-	//{
-	//	ft_putstr_fd("Error\nPlease, configure textures properly\n", 2);
-	//	exit(0);
-	//}
+	if (path == NULL || line[*i] != '\0')
+	{
+		ft_putstr_fd("Error\nPlease, configure textures properly\n", 2);
+		exit(0);
+	}
 }

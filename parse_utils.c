@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:44:35 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/25 18:07:10 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 13:42:52 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,19 @@ char		*ft_strdup_cub3d(char *str)
 	}
 	*temp = '\0';
 	return (dest);
+}
+
+int		check_extension(char *filename, char *extension)
+{
+	int		i;
+
+	i = 0;
+	while (filename[i] != '\0')
+		i++;
+	if ((i > 4 && filename[i - 1] == extension[2]\
+		&& filename[i - 2] == extension[1])
+		&& (filename[i - 3] == extension[0])\
+		&& filename[i - 4] == '.')
+		return (1);
+	return (0);
 }
