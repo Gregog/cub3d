@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 13:43:33 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 15:46:36 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ typedef	struct	s_win
 
 typedef	struct	s_config
 {
-	t_win		win;
-	t_textures	textures;
-	int			save;
+	t_win				win;
+	t_textures			textures;
+	unsigned int		floor;
+	unsigned int		ceiling;
+	int					save;
 }				t_config;
 
 
@@ -47,6 +49,7 @@ int				check_file(char *filename);
 int				skip_spaces(char *line, int *i);
 int				ft_atoi_cub3d(char *line, int *i);
 int				parse_file(char *filename, t_config *config);
+void			get_color(char *line, unsigned int *color, int *i);
 void			parse_resolution(char *line, t_config *config, int *i);
 void			texture_path(char *line, char **path, int *i);
 #endif

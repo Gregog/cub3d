@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:44:35 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 13:42:52 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 14:27:47 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		skip_spaces(char *line, int *i)
 
 int		ft_atoi_cub3d(char *line, int *i)
 {
-	int     num;
+	int		num;
 
 	num = 0;
 	skip_spaces(line, i);

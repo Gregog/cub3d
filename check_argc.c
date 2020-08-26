@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 15:20:24 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 13:44:56 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 14:03:47 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		check_args(int argc, char **argv, t_config *config)
 		ft_putstr_fd("Error\nWrong amount of args\n", 2);
 		return (0);
 	}
-	else if ((argc == 2 && (!(check_extension(argv[1], ".cub") \
-			|| (argc == 3 && (!(check_extension(argv[2], ".cub"))))))))
+	else if ((argc == 2 && (!(check_extension(argv[1], "cub") \
+			|| (argc == 3 && (!(check_extension(argv[2], "cub"))))))))
 	{
 		ft_putstr_fd("Error\nWrong extenstion\n", 2);
 		exit(0);

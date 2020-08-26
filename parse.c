@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/25 17:59:37 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 15:42:03 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int		parse_line(char *line, t_config *config)
 		texture_path(line, &config->textures.e_path, &i);
 	else if (line[i] == 'S' && line[i + 1] == ' ')
 		texture_path(line, &config->textures.i_path, &i);
+	else if (line[i] == 'C' && line[i + 1] == ' ')
+		get_color(line, &config->ceiling, &i);
+	else if (line[i] == 'F' && line[i + 1] == ' ')
+		get_color(line, &config->floor, &i);
 	return (0);
 }
 
