@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 15:46:36 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 16:54:46 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <fcntl.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+
+typedef struct	s_map
+{
+	char	**map;
+	int		x;
+	int		y;
+}				t_map;
 
 typedef struct	s_textures
 {
@@ -36,6 +43,7 @@ typedef	struct	s_config
 {
 	t_win				win;
 	t_textures			textures;
+	t_map				**map;
 	unsigned int		floor;
 	unsigned int		ceiling;
 	int					save;

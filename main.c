@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 15:47:20 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 16:27:57 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_shit(t_config *config)
 	config->textures.w_path = NULL;
 	config->floor = 0;
 	config->ceiling = 0;
+	config->map = NULL;
 }
 
 int	main(int argc, char **argv)
