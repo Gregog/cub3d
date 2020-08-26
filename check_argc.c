@@ -6,18 +6,18 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 15:20:24 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 14:03:47 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 19:36:46 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		check_args(int argc, char **argv, t_config *config)
+void	check_args(int argc, char **argv, t_config *config)
 {
 	if (argc < 2 || argc > 3)
 	{
 		ft_putstr_fd("Error\nWrong amount of args\n", 2);
-		return (0);
+		exit(0);
 	}
 	else if ((argc == 2 && (!(check_extension(argv[1], "cub") \
 			|| (argc == 3 && (!(check_extension(argv[2], "cub"))))))))
@@ -35,7 +35,6 @@ int		check_args(int argc, char **argv, t_config *config)
 		else
 			config->save = 1;
 	}
-	return (1);
 }
 
 int		check_file(char *filename)

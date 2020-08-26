@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 16:15:57 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 18:48:52 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int		parse_line(char *line, t_config *config)
 		get_color(line, &config->ceiling, &i);
 	else if (line[i] == 'F' && line[i + 1] == ' ')
 		get_color(line, &config->floor, &i);
-	else if (line[i] == '1')
-		get_map(config, line);
+	//  else if (line[i] == '1')
+	//	get_map(config, line, &i);
 	return (0);
 }
 

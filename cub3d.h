@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 16:54:46 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/26 19:34:37 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 typedef struct	s_map
 {
 	char	**map;
-	int		x;
-	int		y;
+	int		height;
+	int		width;
+	int		sprites;
 }				t_map;
 
 typedef struct	s_textures
@@ -43,7 +44,7 @@ typedef	struct	s_config
 {
 	t_win				win;
 	t_textures			textures;
-	t_map				**map;
+	t_map				map;
 	unsigned int		floor;
 	unsigned int		ceiling;
 	int					save;
@@ -51,7 +52,7 @@ typedef	struct	s_config
 
 
 char			*ft_strdup_cub3d(char *str);
-int				check_args(int argc, char **argv, t_config *config);
+void			check_args(int argc, char **argv, t_config *config);
 int				check_extension(char *filename, char *extension);
 int				check_file(char *filename);
 int				skip_spaces(char *line, int *i);
@@ -60,4 +61,6 @@ int				parse_file(char *filename, t_config *config);
 void			get_color(char *line, unsigned int *color, int *i);
 void			parse_resolution(char *line, t_config *config, int *i);
 void			texture_path(char *line, char **path, int *i);
+void			get_map(t_config *config, char *line, int *i);
+
 #endif
