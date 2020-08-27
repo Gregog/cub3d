@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 13:58:31 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 15:16:32 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 typedef struct	s_map
 {
 	char	**map;
-	int		height;
-	int		width;
+	int		x;
+	int		y;
 	int		sprites;
 }				t_map;
 
@@ -62,6 +62,7 @@ int				parse_file(char *filename, t_config *config);
 void			get_color(char *line, unsigned int *color, int *i);
 void			parse_resolution(char *line, t_config *config, int *i);
 void			texture_path(char *line, char **path, int *i);
-void			get_map(t_config *config, char *line, int *i);
+void			get_map(t_config *s, char *line, int *i);
+void			config_error(char *message);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 18:48:52 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 15:09:22 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int		parse_line(char *line, t_config *config)
 
 	i = 0;
 	skip_spaces(line, &i);
-	if (line[i] == 'R' && line[i + 1] == ' ')
+	if (line[i] == '1')
+		get_map(config, line, &i);
+	else if (line[i] == 'R' && line[i + 1] == ' ')
 		parse_resolution(line, config, &i);
 	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
 		texture_path(line, &config->textures.n_path, &i);
@@ -34,8 +36,8 @@ int		parse_line(char *line, t_config *config)
 		get_color(line, &config->ceiling, &i);
 	else if (line[i] == 'F' && line[i + 1] == ' ')
 		get_color(line, &config->floor, &i);
-	//  else if (line[i] == '1')
-	//	get_map(config, line, &i);
+	else if (skip_spaces(line, &i) && line[i])
+		config_error("Error\nInvalid lines in map\n");
 	return (0);
 }
 
@@ -57,9 +59,6 @@ int		parse_file(char *filename, t_config *config)
 	}
 	close(fd);
 	if (r < 0)
-	{
-		ft_putstr_fd("Error\nParsing Error\n", 2);
-		exit(0);
-	}
+		config_error("Error\nParsing Error\n");
 	return (1);
 }

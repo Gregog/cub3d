@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 13:42:33 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 14:56:39 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_shit(t_config *config)
 	config->floor = 0;
 	config->ceiling = 0;
 	config->map.map = NULL;
-	config->map.height = 0;
-	config->map.width = 0;
+	config->map.x = 0;
+	config->map.y = 0;
 }
 
 void	make_config(int argc, char **argv, t_config *config)
@@ -59,6 +59,9 @@ int	main(int argc, char **argv)
 	conf.textures.i_path, \
 	conf.floor, \
 	conf.ceiling);
-	line = conf.map.map[i];
-	printf("%s\n", line);
+	while (conf.map.map[i] != '\0')
+	{
+		printf("%s\n", conf.map.map[i]);
+		i++;
+	}
 }
