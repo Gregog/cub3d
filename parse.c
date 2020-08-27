@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 16:33:53 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 16:37:56 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		parse_line(char *line, t_config *config)
 		get_color(line, &config->ceiling, &i);
 	else if (line[i] == 'F' && line[i + 1] == ' ')
 		get_color(line, &config->floor, &i);
-	else if (skip_spaces(line, &i) && line[i] != '\0')
-		config_error("Error\nInvalid symbols");
+	else if (line[i] != '\0')
+		config_error("Error\nInvalid map configuration.\n");
 	return (0);
 }
 
