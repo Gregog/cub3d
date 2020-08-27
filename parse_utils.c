@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:44:35 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 14:27:47 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:58:37 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,14 @@ int		check_extension(char *filename, char *extension)
 		&& filename[i - 2] == extension[1])
 		&& (filename[i - 3] == extension[0])\
 		&& filename[i - 4] == '.')
+		return (1);
+	return (0);
+}
+
+int		is_space(int c)
+{
+	if (c == '\t' || c == '\n' || c == '\r'
+		|| c == '\v' || c == '\f' || c == ' ')
 		return (1);
 	return (0);
 }

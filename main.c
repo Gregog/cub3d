@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 19:37:04 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:42:33 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ void	make_config(int argc, char **argv, t_config *config)
 
 int	main(int argc, char **argv)
 {
-	t_config conf;
-	int i = 0;
-	int j = 0;
+	t_config	conf;
+	char		*line;
+	int 		i = 0;
+	int 		j = 0;
 
 	make_config(argc, argv, &conf);	
 	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
@@ -58,10 +59,6 @@ int	main(int argc, char **argv)
 	conf.textures.i_path, \
 	conf.floor, \
 	conf.ceiling);
-	while (conf.map.map[i])
-	{
-		printf("%s\n", conf.map.map[i]);
-		i++;
-	}
-	return (0);
+	line = conf.map.map[i];
+	printf("%s\n", line);
 }

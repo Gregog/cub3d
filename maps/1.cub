@@ -1,5 +1,6 @@
 R 800 600
 NO textures
+SO text
 WE textures/wall_3.xpm
 EA textures/wall_4.xpm
 S textures/sprite_1.xpm

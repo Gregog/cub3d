@@ -6,9 +6,17 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:59:52 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 19:30:15 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 14:02:04 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	get_map_size(char *line, t_config *config)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+}

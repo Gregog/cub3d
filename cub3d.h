@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/26 19:34:37 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:58:31 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef	struct	s_config
 
 char			*ft_strdup_cub3d(char *str);
 void			check_args(int argc, char **argv, t_config *config);
+int				is_space(int c);
 int				check_extension(char *filename, char *extension);
 int				check_file(char *filename);
 int				skip_spaces(char *line, int *i);

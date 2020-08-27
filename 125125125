@@ -1,0 +1,74 @@
+int             ft_slablen(t_config *s, char *line)
+{
+        int     i;
+        int     count;
+
+        i = 0;
+        count = 0;
+        while (line[i] != '\0')
+        {
+                if (line[i] == '0' || line[i] == '1' || line[i] == '2')
+                        count++;
+                else if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W')
+                        count++;
+                else if (line[i] == 'E')
+                        count++;
+                i++;
+        }
+        if (s->map.height != 0 && s->map.height != count)
+                return (-1);
+        return (count);
+}
+
+char    *ft_slab(t_config *s, char *line, int *i)
+{
+        char    *slab;
+        int             j;
+
+        if (!(slab = malloc(sizeof(char) * (ft_slablen(s, line) + 1))))
+                return (NULL);
+        j = 0;
+        while (line[*i] != '\0')
+        {
+                if ((line[*i] == '0' || line[*i] == '1' || line[*i] == 'N')
+                        || (line[*i] == 'E' || line[*i] == 'S' || line[*i] == 'W'))
+                        slab[j++] = line[*i];
+                else if (line[*i] == '2')
+                {
+                        slab[j++] = line[*i];
+                }
+                else if (line[*i] != ' ')
+                {
+                        free(slab);
+                        return (NULL);
+                }
+                (*i)++;
+        }
+        slab[j] = '\0';
+        return (slab);
+}
+
+int             get_map(t_config *s, char *line, int *i)
+{
+        char    **tmp;
+        int             j;
+
+        if (!(tmp = malloc(sizeof(char *) * (s->map.y + 2))))
+                return (-11);
+        j = -1;
+        while (++j < s->map.y)
+                tmp[j] = s->map.tab[j];
+        if ((tmp[s->map.y] = ft_slab(s, line, i)) == NULL)
+        {
+                free(tmp);
+                return (-12);
+        }
+        tmp[s->map.y + 1] = NULL;
+        if (s->map.y > 0)
+                free(s->map.tab);
+        s->map.tab = tmp;
+        s->map.y++;
+        if ((s->map.x = ft_slablen(s, line)) == -1)
+                return (-13);
+        return (0);
+}
