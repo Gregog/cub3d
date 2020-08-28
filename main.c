@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 16:54:09 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 13:53:22 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ int	main(int argc, char **argv)
 	int 		i = 0;
 	int 		j = 0;
 
-	make_config(argc, argv, &conf);	
+	make_config(argc, argv, &conf);
 	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
 	printf("North Texture path: %s\nSouth Texture path: %s\n\
 	West Texture path: %s\n\
 	East Texture path: %s\n\
 	Item Texture path: %s\n\
 	Floor Color: %u\n\
-	Ceiling Color: %u\n"\
+	Ceiling Color: %u\n\n\n"\
 	, conf.textures.n_path, \
 	conf.textures.s_path, \
 	conf.textures.w_path, \
@@ -64,6 +64,5 @@ int	main(int argc, char **argv)
 		printf("%s\n", conf.map.map[i]);
 		i++;
 	}
-	printf("%s\n", conf.map.map[i]);
 	return(0);
 }

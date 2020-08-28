@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:59:52 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 16:51:29 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 13:49:43 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,36 +34,34 @@ int			get_map_len(t_config *config, char *line)
 	return (count);
 }
 
-char		*copy_map_line(t_config *config, char *line, int *i)
+char		*copy_map_line(t_config *config, char *line)
 {
 	char	*copy;
 	int		j;
+	int		i;
 
 	if (!(copy = malloc(sizeof(char) * (get_map_len(config, line) + 1))))
 		return (NULL);
 	j = 0;
-	while (line[*i] != '\0')
+	i = 0;
+	while (line[i] != '\0')
 	{
-		if ((line[*i] == '0' || line[*i] == '1' || line[*i] == 'N')
-			|| (line[*i] == 'E' || line[*i] == 'S' || line[*i] == 'W'))
-			copy[j++] = line[*i];
-		else if (line[*i] == '2')
+		if ((line[i] == '0' || line[i] == '1' || line[i] == 'N')
+			|| (line[i] == 'E' || line[i] == 'S' || line[i] == 'W'
+			|| (line[i] == ' ')))
+			copy[j++] = line[i];
+		else if (line[i] == '2')
 		{
-			copy[j++] = line[*i];
+			copy[j++] = line[i];
 			config->map.sprites++;
 		}
-		else if (line[*i] != ' ')
-		{
-			free(copy);
-			return (NULL);
-		}
-		(*i)++;
+		i++;
 	}
 	copy[j] = '\0';
 	return (copy);
 }
 
-void		get_map(t_config *config, char *line, int *i)
+void		get_map(t_config *config, char *line)
 {
 	char	**tmp;
 	int		j;
@@ -73,7 +71,7 @@ void		get_map(t_config *config, char *line, int *i)
 	j = -1;
 	while (++j < config->map.y)
 		tmp[j] = config->map.map[j];
-	if ((tmp[config->map.y] = copy_map_line(config, line, i)) == NULL)
+	if ((tmp[config->map.y] = copy_map_line(config, line)) == NULL)
 	{
 		free(tmp);
 		config_error("Error\nInvalid map\n");

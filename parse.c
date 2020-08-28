@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 16:37:56 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 13:44:59 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		parse_line(char *line, t_config *config)
 	i = 0;
 	skip_spaces(line, &i);
 	if (line[i] == '1')
-		get_map(config, line, &i);
+		get_map(config, line);
 	else if (line[i] == 'R' && line[i + 1] == ' ')
 		parse_resolution(line, config, &i);
 	else if (line[i] == 'N' && line[i + 1] == 'O' && line[i + 2] == ' ')
@@ -51,12 +51,15 @@ int		parse_file(char *filename, t_config *config)
 	if (!(check_file(filename)))
 		exit(0);
 	fd = open(filename, O_RDONLY);
-	while ((r = get_next_line(fd, &line)) != 0)
+	while ((r = get_next_line(fd, &line)) > 0)
 	{
 		if (parse_line(line, config) == -1)
 			r = -1;
 		free(line);
 	}
+	if (parse_line(line, config) == -1)
+		r = -1;
+	free(line);
 	close(fd);
 	if (r < 0)
 		config_error("Error\nParsing Error\n");
