@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 15:32:29 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 19:31:01 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_map
 	int		x;
 	int		y;
 	int		rows;
+	int		m;
 }				t_map;
 
 typedef struct	s_textures
@@ -65,5 +66,7 @@ void			texture_path(char *line, char **path, int *i);
 void			get_map(t_config *s, char *line);
 void			config_error(char *message);
 void			check_borders(t_config *config);
+void			check_map_cells(char **map, int rows, int cols);
+void			feel_map_with_love(t_config *conf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 15:47:13 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 19:31:56 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	init_shit(t_config *config)
 	config->map.x = 0;
 	config->map.y = 0;
 	config->map.rows = 0;
+	config->map.m = 0;
 }
 
 void	make_config(int argc, char **argv, t_config *config)
@@ -41,10 +42,11 @@ void	make_config(int argc, char **argv, t_config *config)
 		parse_file(argv[1], config);
 }
 
-
 void	validate_config(t_config *config)
 {
+	feel_map_with_love(config);
 	check_borders(config);
+	check_map_cells(config->map.map, config->map.rows, config->map.m);
 }
 
 int	main(int argc, char **argv)
@@ -56,25 +58,34 @@ int	main(int argc, char **argv)
 
 	make_config(argc, argv, &conf);
 	validate_config(&conf);
-	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
-	printf("North Texture path: %s\nSouth Texture path: %s\n\
-	West Texture path: %s\n\
-	East Texture path: %s\n\
-	Item Texture path: %s\n\
-	Floor Color: %u\n\
-	Ceiling Color: %u\n\n\n"\
-	, conf.textures.n_path, \
-	conf.textures.s_path, \
-	conf.textures.w_path, \
-	conf.textures.e_path, \
-	conf.textures.i_path, \
-	conf.floor, \
-	conf.ceiling);
 	while (conf.map.map[i] != '\0')
 	{
 		printf("%s\n", conf.map.map[i]);
 		i++;
 	}
-	printf("%lu\n", ft_strlen(conf.map.map[0]));
+	printf("%i\n", conf.map.m);
+	//printf("|%c|", conf.map.map[0][conf.map.m - 1]);
+	//validate_config(&conf);
+	//printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
+	//printf("North Texture path: %s\nSouth Texture path: %s\n\
+	//West Texture path: %s\n\
+	//East Texture path: %s\n\
+	//Item Texture path: %s\n\
+	//Floor Color: %u\n\
+	//Ceiling Color: %u\n\n\n"\
+	//, conf.textures.n_path, \
+	//conf.textures.s_path, \
+	//conf.textures.w_path, \
+	//conf.textures.e_path, \
+	//conf.textures.i_path, \
+	//conf.floor, \
+	//conf.ceiling);
+	/*
+	while (conf.map.map[i] != '\0')
+	{
+		printf("%s\n", conf.map.map[i]);
+		i++;
+	}
+	*/
 	return (0);
 }
