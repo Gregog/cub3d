@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:59:52 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 13:49:43 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 15:25:52 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ char		*copy_map_line(t_config *config, char *line)
 	{
 		if ((line[i] == '0' || line[i] == '1' || line[i] == 'N')
 			|| (line[i] == 'E' || line[i] == 'S' || line[i] == 'W'
-			|| (line[i] == ' ')))
+			|| (line[i] == '2')))
 			copy[j++] = line[i];
-		else if (line[i] == '2')
+		else if (line[i] == ' ')
 		{
-			copy[j++] = line[i];
-			config->map.sprites++;
+			copy[j++] = '1';
 		}
 		i++;
 	}
@@ -82,5 +81,5 @@ void		get_map(t_config *config, char *line)
 	config->map.map = tmp;
 	config->map.y++;
 	if ((config->map.x = get_map_len(config, line)) == -1)
-		config_error("Error\nInvalid map231\n");
+		config_error("Error\nInvalid map\n");
 }

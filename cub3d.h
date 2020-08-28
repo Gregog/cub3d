@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 13:45:07 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 14:23:59 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void			parse_resolution(char *line, t_config *config, int *i);
 void			texture_path(char *line, char **path, int *i);
 void			get_map(t_config *s, char *line);
 void			config_error(char *message);
+void			check_borders(t_config *config);
 
 #endif
