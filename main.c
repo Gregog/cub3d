@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 14:35:40 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 15:47:13 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_shit(t_config *config)
 	config->map.map = NULL;
 	config->map.x = 0;
 	config->map.y = 0;
+	config->map.rows = 0;
 }
 
 void	make_config(int argc, char **argv, t_config *config)
@@ -40,12 +41,12 @@ void	make_config(int argc, char **argv, t_config *config)
 		parse_file(argv[1], config);
 }
 
-/*
+
 void	validate_config(t_config *config)
 {
 	check_borders(config);
 }
-*/
+
 int	main(int argc, char **argv)
 {
 	t_config	conf;
@@ -54,15 +55,7 @@ int	main(int argc, char **argv)
 	int			j = 0;
 
 	make_config(argc, argv, &conf);
-	while (conf.map.map[i] != '\0')
-	{
-		printf("%s\n", conf.map.map[i]);
-		i++;
-	}
-	printf("%lu\n", ft_strlen(conf.map.map[0]));
-	printf("%i\n", conf.map.x);
-	printf("%i\n", conf.map.y);
-	// validate_config(&conf);
+	validate_config(&conf);
 	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
 	printf("North Texture path: %s\nSouth Texture path: %s\n\
 	West Texture path: %s\n\
@@ -77,5 +70,11 @@ int	main(int argc, char **argv)
 	conf.textures.i_path, \
 	conf.floor, \
 	conf.ceiling);
-	return(0);
+	while (conf.map.map[i] != '\0')
+	{
+		printf("%s\n", conf.map.map[i]);
+		i++;
+	}
+	printf("%lu\n", ft_strlen(conf.map.map[0]));
+	return (0);
 }

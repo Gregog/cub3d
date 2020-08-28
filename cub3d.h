@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 14:23:59 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 15:32:29 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_map
 	char	**map;
 	int		x;
 	int		y;
-	int		sprites;
+	int		rows;
 }				t_map;
 
 typedef struct	s_textures

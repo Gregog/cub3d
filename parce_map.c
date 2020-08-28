@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:59:52 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 15:25:52 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/28 15:33:16 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void		get_map(t_config *config, char *line)
 		free(tmp);
 		config_error("Error\nInvalid map\n");
 	}
+	config->map.rows += 1;
 	tmp[config->map.y + 1] = NULL;
 	if (config->map.y > 0)
 		free(config->map.map);
