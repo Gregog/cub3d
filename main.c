@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 15:19:54 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 16:31:51 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,36 +60,31 @@ int	main(int argc, char **argv)
 
 	make_config(argc, argv, &conf);
 	validate_config(&conf);
-	while (conf.map.map[i] != '\0')
-	{
-		printf("%s\n", conf.map.map[i]);
-		i++;
-	}
 	get_player_pos(&conf, conf.map.map, conf.map.rows, conf.map.m);
 	printf("%i\n", conf.map.m);
 	printf("Player x: %i\nPlayer y: %i\n", conf.player.x, conf.player.y);
-	//printf("|%c|", conf.map.map[0][conf.map.m - 1]);
-	//validate_config(&conf);
-	//printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
-	//printf("North Texture path: %s\nSouth Texture path: %s\n\
-	//West Texture path: %s\n\
-	//East Texture path: %s\n\
-	//Item Texture path: %s\n\
-	//Floor Color: %u\n\
-	//Ceiling Color: %u\n\n\n"\
-	//, conf.textures.n_path, \
-	//conf.textures.s_path, \
-	//conf.textures.w_path, \
-	//conf.textures.e_path, \
-	//conf.textures.i_path, \
-	//conf.floor, \
-	//conf.ceiling);
-	/*
+	printf("|%c|", conf.map.map[0][conf.map.m - 1]);
+	validate_config(&conf);
+	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
+	printf("North Texture path: %s\nSouth Texture path: %s\n\
+	West Texture path: %s\n\
+	East Texture path: %s\n\
+	Item Texture path: %s\n\
+	Floor Color: %u\n\
+	Ceiling Color: %u\n "
+	, conf.textures.n_path, \
+	conf.textures.s_path, \
+	conf.textures.w_path, \
+	conf.textures.e_path, \
+	conf.textures.i_path, \
+	conf.floor, \
+	conf.ceiling);
+	printf("Player pos |x, y|: |%i, %i|\n", conf.player.x, conf.player.y);
+	printf("Player dir: %f\n\n\n", conf.player.dir);
 	while (conf.map.map[i] != '\0')
 	{
 		printf("%s\n", conf.map.map[i]);
 		i++;
 	}
-	*/
 	return (0);
 }

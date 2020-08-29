@@ -6,13 +6,14 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 15:13:50 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 16:22:59 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# define PI 3.141592
 # include <fcntl.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
@@ -39,6 +40,7 @@ typedef	struct	s_player_pos
 {
 	int		x;
 	int		y;
+	double	dir;
 }				t_player_pos;
 
 typedef	struct	s_win

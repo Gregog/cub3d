@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 14:11:04 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 15:21:27 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 16:24:33 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,18 @@ void	check_map_cells(char **map, int rows, int cols)
 	}
 }
 
+void	define_player_dir(t_config *con, char c)
+{
+	if (c == 'N')
+		con->player.dir = PI / 2;
+	else if (c == 'S')
+		con->player.dir = 3 * PI / 2;
+	else if (c == 'E')
+		con->player.dir = 0;
+	else if (c == 'W')
+		con->player.dir = PI;
+}
+
 void	get_player_pos(t_config *con, char **map, int rows, int cols)
 {
 	int i;
@@ -83,6 +95,7 @@ void	get_player_pos(t_config *con, char **map, int rows, int cols)
 					config_error("Error\n2 players on map\n");
 				else
 				{
+					define_player_dir(con, map[i][j]);
 					con->player.x = i;
 					con->player.y = j;
 				}
