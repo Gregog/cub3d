@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:28:01 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 13:44:59 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 
 int		parse_line(char *line, t_config *config)
 {

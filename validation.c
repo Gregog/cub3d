@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 14:11:04 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 17:11:52 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 
 void	check_borders(t_config *c)
 {
@@ -85,8 +85,8 @@ void	get_player_pos(t_config *con, char **map, int rows, int cols)
 	i = 1;
 	while (map[i] && i < rows - 1)
 	{
-		j = 1;
-		while (map[i][j] && j < cols - 1)
+		j = 0;
+		while (map[i][j++] && j < cols - 1)
 		{
 			if (map[i][j] == 'N' || map[i][j] == 'S'
 				|| map[i][j] == 'W' || map[i][j] == 'E')
@@ -96,11 +96,11 @@ void	get_player_pos(t_config *con, char **map, int rows, int cols)
 				else
 				{
 					define_player_dir(con, map[i][j]);
+					map[i][j] = '0';
 					con->player.x = i;
 					con->player.y = j;
 				}
 			}
-			j++;
 		}
 		i++;
 	}

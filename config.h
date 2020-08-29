@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   config.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 16:54:41 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:55:36 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CONFIG_H
+# define CONFIG_H
 
 # define PI 3.141592
 # include <fcntl.h>
@@ -81,4 +81,5 @@ void			check_map_cells(char **map, int rows, int cols);
 void			feel_map_with_love(t_config *conf);
 void			get_player_pos(t_config *con, char **map, int rows, int cols);
 void			check_window_resolution(t_config *config);
+void			final_validation(t_config *c);
 #endif

@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 14:44:35 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 13:58:37 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 
 int		skip_spaces(char *line, int *i)
 {

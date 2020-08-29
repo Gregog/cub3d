@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 15:59:52 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 19:14:15 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 
 int			get_map_len(t_config *config, char *line)
 {

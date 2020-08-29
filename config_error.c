@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/27 15:04:22 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 15:16:04 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 
 void	config_error(char *message)
 {

@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 17:11:22 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:58:52 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 #include <stdio.h>
 #include <mlx.h>
 
@@ -60,12 +60,13 @@ void	validate_config(t_config *config)
 	//								config->win.y, "Cub3D");
 	//if (!config->win.win)
 	//	config_error("Error\nFailed to init window.\n");
+	final_validation(config);
+	ft_putstr_fd("WELL DONE\nYOU MAP IS VALID\nTIME TO PLAY!\n", 1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_config	conf;
-	char		*line;
 	int			i = 0;
 	int			j = 0;
 

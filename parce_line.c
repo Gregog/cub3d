@@ -6,11 +6,11 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:52:59 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 17:20:37 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "config.h"
 
 void		parse_resolution(char *line, t_config *config, int *i)
 {
@@ -62,7 +62,6 @@ void		get_color(char *line, unsigned int *color, int *i)
 	g = ft_atoi_cub3d(line, i);
 	skip_spaces(line, i);
 	(*i)++;
-	skip_spaces(line, i);
 	b = ft_atoi_cub3d(line, i);
 	skip_spaces(line, i);
 	if (line[*i] != '\0' || r > 255 || g > 255 || b > 255)
