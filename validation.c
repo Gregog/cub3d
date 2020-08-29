@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 14:11:04 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 16:24:33 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:04:00 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ void	get_player_pos(t_config *con, char **map, int rows, int cols)
 				|| map[i][j] == 'W' || map[i][j] == 'E')
 			{
 				if (con->player.x != 0 && con->player.y != 0)
+				{
+					printf("%i\n %i\n", con->player.x, con->player.y);
 					config_error("Error\n2 players on map\n");
+				}
 				else
 				{
 					define_player_dir(con, map[i][j]);
@@ -104,4 +107,18 @@ void	get_player_pos(t_config *con, char **map, int rows, int cols)
 		}
 		i++;
 	}
+}
+
+void	check_window_resolution(t_config *config)
+{
+	int size_x;
+	int size_y;
+
+	mlx_get_screen_size(config->mlx, &size_x, &size_y);
+	printf("RES X:%i\n", size_x);
+	printf("RES Y%i\n", size_y);
+	if (config->win.x > size_x)
+		config->win.x = size_x;
+	if (config->win.y > size_y)
+		config->win.y = size_y;
 }

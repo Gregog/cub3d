@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 16:31:51 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:02:16 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init_shit(t_config *config)
 	config->map.m = 0;
 	config->player.x = 0;
 	config->player.y = 0;
+	config->mlx = NULL;
+	config->win.win = NULL;
 }
 
 void	make_config(int argc, char **argv, t_config *config)
@@ -42,13 +44,22 @@ void	make_config(int argc, char **argv, t_config *config)
 		parse_file(argv[1], config);
 	if (argc == 3)
 		parse_file(argv[1], config);
+	config->mlx = mlx_init();
+	if (!config->mlx)
+		config_error("Error\nFailed to init mlx\n");
 }
 
 void	validate_config(t_config *config)
 {
 	feel_map_with_love(config);
+	check_window_resolution(config);
 	check_borders(config);
 	check_map_cells(config->map.map, config->map.rows, config->map.m);
+	get_player_pos(config, config->map.map, config->map.rows, config->map.m);
+	config->win.win = mlx_new_window(config->mlx, config->win.x,
+									config->win.y, "Cub3D");
+	if (!config->win.win)
+		config_error("Error\nFailed to init window.\n");
 }
 
 int	main(int argc, char **argv)
@@ -59,11 +70,6 @@ int	main(int argc, char **argv)
 	int			j = 0;
 
 	make_config(argc, argv, &conf);
-	validate_config(&conf);
-	get_player_pos(&conf, conf.map.map, conf.map.rows, conf.map.m);
-	printf("%i\n", conf.map.m);
-	printf("Player x: %i\nPlayer y: %i\n", conf.player.x, conf.player.y);
-	printf("|%c|", conf.map.map[0][conf.map.m - 1]);
 	validate_config(&conf);
 	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
 	printf("North Texture path: %s\nSouth Texture path: %s\n\
@@ -86,5 +92,6 @@ int	main(int argc, char **argv)
 		printf("%s\n", conf.map.map[i]);
 		i++;
 	}
+	mlx_loop(conf.mlx);
 	return (0);
 }

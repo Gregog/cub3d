@@ -6,7 +6,7 @@
 #    By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/24 18:03:21 by rvernius          #+#    #+#              #
-#    Updated: 2020/08/28 14:23:40 by rvernius         ###   ########.fr        #
+#    Updated: 2020/08/29 16:39:48 by rvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT = libft.a
 all:			$(NAME)
 
 $(NAME):		$(LIBFT) $(OBJS)
-				gcc ${FLAGS} -o ${NAME} ${SRCS} $(LIBFT)
+				gcc ${FLAGS} -o ${NAME} ${SRCS} $(LIBFT) $(MLX)
 
 
 #$(MLX):

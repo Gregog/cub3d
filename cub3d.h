@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 16:22:59 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 16:54:41 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ typedef	struct	s_player_pos
 
 typedef	struct	s_win
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	void	*win;
 }				t_win;
 
 typedef	struct	s_config
 {
+	void				*mlx;
 	t_win				win;
 	t_textures			textures;
 	t_map				map;
@@ -78,4 +80,5 @@ void			check_borders(t_config *config);
 void			check_map_cells(char **map, int rows, int cols);
 void			feel_map_with_love(t_config *conf);
 void			get_player_pos(t_config *con, char **map, int rows, int cols);
+void			check_window_resolution(t_config *config);
 #endif
