@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 14:11:04 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 19:36:53 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 15:21:27 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,40 @@ void	check_map_cells(char **map, int rows, int cols)
 		j = 1;
 		while (map[i][j] && j < cols - 1)
 		{
-			if (map[i][j] == '0')
+			if (map[i][j] == '0' || map[i][j] == 'N'
+				|| map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 			{
 				if (map[i][j - 1] == ' ' || map[i][j + 1] == ' '
 					|| map[i - 1][j] == ' ' || map[i + 1][j] == ' ')
 					config_error("Error\nInvalid Map\n");
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void	get_player_pos(t_config *con, char **map, int rows, int cols)
+{
+	int i;
+	int j;
+
+	i = 1;
+	while (map[i] && i < rows - 1)
+	{
+		j = 1;
+		while (map[i][j] && j < cols - 1)
+		{
+			if (map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'W' || map[i][j] == 'E')
+			{
+				if (con->player.x != 0 && con->player.y != 0)
+					config_error("Error\n2 players on map\n");
+				else
+				{
+					con->player.x = i;
+					con->player.y = j;
+				}
 			}
 			j++;
 		}

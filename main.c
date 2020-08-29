@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/28 19:31:56 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 15:19:54 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	init_shit(t_config *config)
 	config->map.y = 0;
 	config->map.rows = 0;
 	config->map.m = 0;
+	config->player.x = 0;
+	config->player.y = 0;
 }
 
 void	make_config(int argc, char **argv, t_config *config)
@@ -63,7 +65,9 @@ int	main(int argc, char **argv)
 		printf("%s\n", conf.map.map[i]);
 		i++;
 	}
+	get_player_pos(&conf, conf.map.map, conf.map.rows, conf.map.m);
 	printf("%i\n", conf.map.m);
+	printf("Player x: %i\nPlayer y: %i\n", conf.player.x, conf.player.y);
 	//printf("|%c|", conf.map.map[0][conf.map.m - 1]);
 	//validate_config(&conf);
 	//printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
