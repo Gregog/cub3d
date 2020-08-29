@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 18:31:38 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 17:55:36 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 19:02:02 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void			feel_map_with_love(t_config *conf);
 void			get_player_pos(t_config *con, char **map, int rows, int cols);
 void			check_window_resolution(t_config *config);
 void			final_validation(t_config *c);
+void			make_screen(t_config *config);
 #endif
