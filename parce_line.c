@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:52:59 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/27 15:15:20 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:20:37 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,15 @@ void		get_color(char *line, unsigned int *color, int *i)
 		exit(0);
 	}
 	r = ft_atoi_cub3d(line, i);
+	skip_spaces(line, i);
 	(*i)++;
 	g = ft_atoi_cub3d(line, i);
+	skip_spaces(line, i);
 	(*i)++;
+	skip_spaces(line, i);
 	b = ft_atoi_cub3d(line, i);
 	skip_spaces(line, i);
 	if (line[*i] != '\0' || r > 255 || g > 255 || b > 255)
-		config_error("Error\nPlease configure color properly");
+		config_error("Error\nPlease configure color properly\n");
 	*color = r * 65536 + g * 256 + b;
 }

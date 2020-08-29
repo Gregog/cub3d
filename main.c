@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 17:02:16 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:11:22 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	validate_config(t_config *config)
 	check_borders(config);
 	check_map_cells(config->map.map, config->map.rows, config->map.m);
 	get_player_pos(config, config->map.map, config->map.rows, config->map.m);
-	config->win.win = mlx_new_window(config->mlx, config->win.x,
-									config->win.y, "Cub3D");
-	if (!config->win.win)
-		config_error("Error\nFailed to init window.\n");
+	//config->win.win = mlx_new_window(config->mlx, config->win.x,
+	//								config->win.y, "Cub3D");
+	//if (!config->win.win)
+	//	config_error("Error\nFailed to init window.\n");
 }
 
 int	main(int argc, char **argv)
@@ -92,6 +92,6 @@ int	main(int argc, char **argv)
 		printf("%s\n", conf.map.map[i]);
 		i++;
 	}
-	mlx_loop(conf.mlx);
+	//mlx_loop(conf.mlx);
 	return (0);
 }

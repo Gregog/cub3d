@@ -6,8 +6,8 @@ WE textures/wall_3.xpm
 EA textures/wall_4.xpm
 
 S textures/sprite_1.xpm
-F 184,113,39
-C 51,198,227
+F 184    ,      113,   39 
+C 51   ,   198,   256
 
         1111111111111111111111111
         10E0000000110000000000001
