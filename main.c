@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/09/01 12:45:34 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/09/01 12:52:46 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	validate_config(t_config *config)
 	final_validation(config);
 	//if (config->save)
 	//	make_screen(config);
-	ft_putstr_fd("WELL DONE\nYOU MAP IS VALID\nTIME TO PLAY!\n", 1);
+	ft_putstr_fd("WELL DONE\nYOU MAP IS VALID\nTIME TO PLAY A GAME!\n", 1);
 }
 
 int	main(int argc, char **argv)
