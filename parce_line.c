@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/25 16:52:59 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 17:48:12 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/09/01 12:44:37 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,14 @@ void		texture_path(char *line, char **path, int *i)
 	if (*path != NULL)
 		config_error("Error\nYou need to configure textures only once\n");
 	(*i) += 2;
-	skip_spaces(line, i);
-	if (line[*i] != '\0' && line[*i] != ' ')
-		*path = ft_strdup_cub3d(&line[*i]);
+	line = ft_strtrim(&line[*i], " ");
+	if (check_extension(line, "xmp"))
+		*path = ft_strdup(line);
+	else
+		config_error("Error\nTexture format corrupted\n");
 	if (!(*path))
 		config_error("Error\nCheck texture path. Empty or too long\n");
-	while (line[*i] != '\0' && line[*i] != ' ')
-		(*i) += 1;
-	skip_spaces(line, i);
-	if (path == NULL || line[*i] != '\0')
+	if (path == NULL)
 		config_error("Error\nPlease, configure textures properly\n");
 }
 
@@ -62,6 +61,7 @@ void		get_color(char *line, unsigned int *color, int *i)
 	g = ft_atoi_cub3d(line, i);
 	skip_spaces(line, i);
 	(*i)++;
+	skip_spaces(line, i);
 	b = ft_atoi_cub3d(line, i);
 	skip_spaces(line, i);
 	if (line[*i] != '\0' || r > 255 || g > 255 || b > 255)

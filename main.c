@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/08/29 19:02:03 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/09/01 12:45:34 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,13 @@ void	make_config(int argc, char **argv, t_config *config)
 	config->mlx = mlx_init();
 	if (!config->mlx)
 		config_error("Error\nFailed to init mlx\n");
+	if (!config->map.map)
+		config_error("Error\nMap was not specifed\n");
 }
 
 void	validate_config(t_config *config)
 {
+	
 	feel_map_with_love(config);
 	check_window_resolution(config);
 	check_borders(config);
@@ -61,8 +64,8 @@ void	validate_config(t_config *config)
 	//if (!config->win.win)
 	//	config_error("Error\nFailed to init window.\n");
 	final_validation(config);
-	if (config->save)
-		make_screen(config);
+	//if (config->save)
+	//	make_screen(config);
 	ft_putstr_fd("WELL DONE\nYOU MAP IS VALID\nTIME TO PLAY!\n", 1);
 }
 
