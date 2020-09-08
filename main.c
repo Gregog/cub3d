@@ -5,100 +5,96 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/24 17:58:50 by rvernius          #+#    #+#             */
-/*   Updated: 2020/09/01 12:52:46 by rvernius         ###   ########.fr       */
+/*   Created: 2020/09/01 15:22:46 by rvernius          #+#    #+#             */
+/*   Updated: 2020/09/08 14:14:23 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "config.h"
 #include <stdio.h>
-#include <mlx.h>
+#include "mlx.h"
+#include <math.h>
+#include <stdlib.h>
+#include "v_types.h"
+#include "cub.h"
+#include "keys.h"
+#include "x11_events.h"
+#include "cub.h"
+#include "libft.h"
 
-void	init_shit(t_config *config)
+static void	convert_map_to_i(char ***map, size_t height,
+						size_t width, int *sprites_count)
 {
-	config->win.x = 0;
-	config->win.y = 0;
-	config->textures.e_path = NULL;
-	config->textures.i_path = NULL;
-	config->textures.n_path = NULL;
-	config->textures.s_path = NULL;
-	config->textures.w_path = NULL;
-	config->floor = 0;
-	config->ceiling = 0;
-	config->map.map = NULL;
-	config->map.x = 0;
-	config->map.y = 0;
-	config->map.rows = 0;
-	config->map.m = 0;
-	config->player.x = 0;
-	config->player.y = 0;
-	config->mlx = NULL;
-	config->win.win = NULL;
-}
+	int	i;
+	int	j;
 
-void	make_config(int argc, char **argv, t_config *config)
-{
-	check_args(argc, argv, config);
-	init_shit(config);
-	if (argc == 2)
-		parse_file(argv[1], config);
-	if (argc == 3)
-		parse_file(argv[2], config);
-	config->mlx = mlx_init();
-	if (!config->mlx)
-		config_error("Error\nFailed to init mlx\n");
-	if (!config->map.map)
-		config_error("Error\nMap was not specifed\n");
-}
-
-void	validate_config(t_config *config)
-{
-	
-	feel_map_with_love(config);
-	check_window_resolution(config);
-	check_borders(config);
-	check_map_cells(config->map.map, config->map.rows, config->map.m);
-	get_player_pos(config, config->map.map, config->map.rows, config->map.m);
-	//config->win.win = mlx_new_window(config->mlx, config->win.x,
-	//								config->win.y, "Cub3D");
-	//if (!config->win.win)
-	//	config_error("Error\nFailed to init window.\n");
-	final_validation(config);
-	//if (config->save)
-	//	make_screen(config);
-	ft_putstr_fd("WELL DONE\nYOU MAP IS VALID\nTIME TO PLAY A GAME!\n", 1);
-}
-
-int	main(int argc, char **argv)
-{
-	t_config	conf;
-	int			i = 0;
-	int			j = 0;
-
-	make_config(argc, argv, &conf);
-	validate_config(&conf);
-	printf("Windows x: %i\nWindows y: %i\n", conf.win.x, conf.win.y);
-	printf("North Texture path: %s\nSouth Texture path: %s\n\
-	West Texture path: %s\n\
-	East Texture path: %s\n\
-	Item Texture path: %s\n\
-	Floor Color: %u\n\
-	Ceiling Color: %u\n "
-	, conf.textures.n_path, \
-	conf.textures.s_path, \
-	conf.textures.w_path, \
-	conf.textures.e_path, \
-	conf.textures.i_path, \
-	conf.floor, \
-	conf.ceiling);
-	printf("Player pos |x, y|: |%i, %i|\n", conf.player.x, conf.player.y);
-	printf("Player dir: %f\n\n\n", conf.player.dir);
-	printf("SAVED: %i\n\n\n", conf.save);
-	while (conf.map.map[i] != '\0')
+	i = -1;
+	while (++i < (int)height)
 	{
-		printf("%s\n", conf.map.map[i]);
-		i++;
+		j = -1;
+		while (++j < (int)width)
+		{
+			(*map)[i][j] -= (int)'0';
+			if ((*map)[i][j] == 2)
+				++(*sprites_count);
+			if ((*map)[i][j] == -16)
+				(*map)[i][j] += 17;
+		}
 	}
-	//mlx_loop(conf.mlx);
+}
+
+static void	init_game(t_game *game)
+{
+	game->vars.win = NULL;
+	if (!(game->vars.win = mlx_new_window(game->vars.mlx, game->config.win.x,
+								game->config.win.y, "Bonk")))
+		game_exit(11, game);
+	game->map_active = 0;
+	game->rays_count = RAYS_COUNT;
+	game->player.pos = new_vector2(
+	game->config.player.x * GRID_SIZE + (float)GRID_SIZE / 2,
+	game->config.player.y * GRID_SIZE + (float)GRID_SIZE / 2);
+	game->img.img = NULL;
+	game->player.rotation = game->config.player.dir;
+	game->player.run = 0;
+}
+
+static void	setup_hooks(t_game *game)
+{
+	mlx_loop_hook(game->vars.mlx, draw_frame, game);
+	mlx_hook(game->vars.win, KEY_PRESS, KEY_PRESS_MASK, move_player, game);
+	mlx_hook(game->vars.win, DESTROY_NOTIFY, STRUCTURE_NOTIFY_MASK,
+			cross_exit, game);
+}
+
+static void	make_screenshot(t_game *game)
+{
+	draw_frame(game);
+	save_bmp(game->config.win.x, game->config.win.y, game->img.addr);
+	game_exit(0, game);
+}
+
+int			main(int argc, char **argv)
+{
+	t_game		game;
+	int			line_width;
+	t_ivector2	screen_size;
+
+	game.vars.mlx = NULL;
+	make_config(argc, argv, &game);
+	validate_config(&game);
+	if (!(game.vars.mlx = mlx_init()))
+		game_exit(11, &game);
+	init_game(&game);
+	convert_map_to_i(&game.config.map.map, game.config.map.rows,
+					game.config.map.m, &game.sprites_count);
+	screen_size = new_ivector2(game.config.win.x, game.config.win.y);
+	while (!same_value((float)screen_size.x / (float)game.rays_count,
+			(int)((float)screen_size.x / (float)game.rays_count)))
+		--game.rays_count;
+	line_width = (int)round((float)screen_size.x / (float)game.rays_count);
+	if (game.config.save)
+		make_screenshot(&game);
+	setup_hooks(&game);
+	mlx_loop(game.vars.mlx);
 	return (0);
 }
