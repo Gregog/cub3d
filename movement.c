@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 17:06:31 by rvernius          #+#    #+#             */
-/*   Updated: 2020/09/08 14:14:23 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:26:27 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int					move_player(int key, t_game *game)
 {
 	t_vector2	new_pos;
 
-	printf("%i\n", key);
 	new_pos = new_vector2(game->player.pos.x, game->player.pos.y);
 	if (key == KEY_W || key == KEY_A || key == KEY_S || key == KEY_D)
 		new_pos = get_new_pos(key, game->player);
