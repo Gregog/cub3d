@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 13:53:00 by rvernius          #+#    #+#             */
-/*   Updated: 2020/09/08 14:14:23 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:20:59 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ static void			clean_garbage(t_game *game)
 {
 	free_texture_path(&game->config);
 	free_map(game->config.map.map);
+	if (game->depth_buffer)
+	{
+		free(game->depth_buffer);
+		game->depth_buffer = NULL;
+	}
 	clear_and_stop_mlx(game);
 }
 

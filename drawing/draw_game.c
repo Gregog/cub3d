@@ -6,7 +6,7 @@
 /*   By: rvernius <rvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/01 17:04:40 by rvernius          #+#    #+#             */
-/*   Updated: 2020/09/08 14:14:23 by rvernius         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:22:58 by rvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	draw_sprites(char **map, t_game *game, t_ivector2 map_size)
 	while (++i < game->sprites_count)
 		draw_sprite(params, game, sprites[i]);
 	free(game->depth_buffer);
+	game->depth_buffer = NULL;
 	free(sprites);
 }
 
